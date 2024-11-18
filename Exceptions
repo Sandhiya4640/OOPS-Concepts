@@ -1,0 +1,74 @@
+class PriceException extends Exception{
+    PriceException(String s){
+        super(s);
+    }
+}
+
+class ElectricalDevice{
+    String modelName;
+    int price;
+    int warranty;
+
+    ElectricalDevice(String modelName,int price,int warranty){
+        this.modelName = modelName;
+        this.price = price;
+        this.warranty = warranty;
+    }
+    void charging(){
+        System.out.println("This device uses the electricity for charging");
+    }
+}
+
+class IronBox extends ElectricalDevice{
+    IronBox(String modelName,int price,int warranty){
+        super(modelName,price,warranty);
+    }
+}
+class ElectricCar extends ElectricalDevice{
+    ElectricCar(String modelName,int price,int warranty){
+        super(modelName,price,warranty);
+    }
+}
+class MobilePhone extends ElectricalDevice{
+    MobilePhone(String modelName,int price,int warranty){
+        super(modelName,price,warranty);
+    }
+}
+class Tv extends ElectricalDevice{
+    Tv(String modelName,int price,int warranty){
+        super(modelName,price,warranty);
+    }
+}
+class WashingMachine extends ElectricalDevice{
+    WashingMachine(String modelName,int price,int warranty){
+        super(modelName,price,warranty);
+    }
+}
+
+class dempo{
+    public static void main(String[] args) {
+
+
+
+        ElectricalDevice devices[] = { new IronBox("philips",900,2),
+                new ElectricCar("Renault",-33,2),
+                new MobilePhone("poco",1200,2),
+                new Tv("samsung",6600,2),
+                new WashingMachine("IBM",80000,2)};
+
+        ElectricalDevice obj = new ElectricalDevice("Victus",300,7);
+        obj.charging();
+        System.out.println();
+
+
+        try{
+            for(ElectricalDevice device : devices){
+                if(device.price < 0){
+                    throw new PriceException("Price cannot be negetive for the Electrical Device: "+device.modelName);
+                }
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
